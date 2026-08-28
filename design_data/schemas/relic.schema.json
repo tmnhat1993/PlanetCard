@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "relic.schema.json",
+  "title": "RelicData",
+  "type": "object",
+  "required": ["id", "name"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+    "name": {"type": "string"},
+    "trigger": {"type": "string"},
+    "condition": {"$ref": "condition.schema.json"},
+    "effect": {"$ref": "effect.schema.json"},
+    "passives": {"type": "array", "minItems": 1, "items": {"$ref": "effect.schema.json"}}
+  },
+  "anyOf": [
+    {"required": ["effect"]},
+    {"required": ["passives"]}
+  ],
+  "additionalProperties": false
+}

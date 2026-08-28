@@ -1,0 +1,45 @@
+[
+  {
+    "id": "stone_mine",
+    "type": "EXTRACTOR",
+    "input": {},
+    "output": {
+      "ORE": 3
+    },
+    "cycles": 1
+  },
+  {
+    "id": "stone_processor_alloy",
+    "type": "PROCESSOR",
+    "input": {
+      "ORE": 3
+    },
+    "output": {
+      "ALLOY": 1
+    },
+    "cycles": 1
+  },
+  {
+    "id": "stone_processor_crystal",
+    "type": "PROCESSOR",
+    "input": {
+      "ALLOY": 3
+    },
+    "output": {
+      "PRECISION_CRYSTAL": 1
+    },
+    "cycles": 2
+  },
+  {
+    "id": "stone_research",
+    "type": "RESEARCH"
+  },
+  {
+    "id": "stone_shipyard",
+    "type": "SHIPYARD"
+  },
+  {
+    "id": "stone_trade_port",
+    "type": "TRADE_PORT"
+  }
+]

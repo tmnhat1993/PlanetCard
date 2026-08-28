@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "attribute_stamp.schema.json",
+  "title": "AttributeStamp",
+  "type": "object",
+  "required": ["id", "group"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+    "group": { "enum": ["FACTION", "TYPE", "DAMAGE", "MECHANIC", "KEYWORD"] },
+    "icon_path": { "type": "string" }
+  },
+  "additionalProperties": false
+}

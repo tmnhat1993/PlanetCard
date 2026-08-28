@@ -1,0 +1,37 @@
+{
+  "fixture_version": 1,
+  "id": "combat_stress",
+  "turn": 11,
+  "seed": 999999,
+  "player": {
+    "hull": 9,
+    "max_hull": 120,
+    "shield": 27,
+    "armor": 14,
+    "energy": 0,
+    "max_energy": 4,
+    "statuses": [
+      {"id": "poison", "stacks": 12, "duration": null},
+      {"id": "weakness", "stacks": 1, "duration": 2},
+      {"id": "system_failure", "stacks": 1, "duration": 1}
+    ]
+  },
+  "enemies": [
+    {"id": "support_01", "name": "Spore Caster", "role": "SUPPORT", "hp": 12, "max_hp": 24, "intent": {"icon": "poison", "label": "Poison 4"}, "statuses": []},
+    {"id": "tank_01", "name": "Ancient Vine Guardian", "role": "TANK", "hp": 55, "max_hp": 60, "intent": {"icon": "protect", "label": "Protect all"}, "statuses": [{"id": "armor", "stacks": 18, "duration": null}]},
+    {"id": "striker_01", "name": "Thornling Alpha", "role": "STRIKER", "hp": 7, "max_hp": 22, "intent": {"icon": "attack", "label": "Attack 14 ×2"}, "statuses": [{"id": "poison", "stacks": 9, "duration": null}]}
+  ],
+  "hand": [
+    {"instance_id": "c1", "card_id": "stone_rock_cannon", "name": "Rock Cannon", "energy_cost": 1, "rules": "Deal 9 damage.", "preview": "7 (+2)", "playable": false, "invalid_reason": "NO_ENERGY"},
+    {"instance_id": "c2", "card_id": "stone_layered_plating", "name": "Layered Plating", "energy_cost": 1, "rules": "Gain 9 Shield.", "preview": "7 (+2)", "playable": false, "invalid_reason": "NO_ENERGY"},
+    {"instance_id": "c3", "card_id": "stone_seismic_cannon", "name": "Seismic Cannon", "energy_cost": 2, "rules": "Deal 14. If target has Fracture, deal 8 more.", "preview": "14 (+8 conditional)", "playable": false, "invalid_reason": "NO_ENERGY"},
+    {"instance_id": "c4", "card_id": "plant_toxic_spore", "name": "Toxic Spore", "energy_cost": 1, "rules": "Apply 3 Poison.", "preview": "3 Poison", "playable": false, "invalid_reason": "LOCKED", "locked_duration": 2},
+    {"instance_id": "c5", "card_id": "plant_germinate", "name": "Germinate", "energy_cost": 1, "rules": "Create a Seed.", "preview": "Summon", "playable": false, "invalid_reason": "SUMMON_ZONE_FULL"},
+    {"instance_id": "c6", "card_id": "plant_leech_vine", "name": "Leech Vine", "energy_cost": 2, "rules": "Deal 5. Repair from Poison, up to 6.", "preview": "5 + repair 6", "playable": false, "invalid_reason": "NO_ENERGY"},
+    {"instance_id": "c7", "card_id": "fixture_long_name", "name": "Emergency Geological Stabilization Protocol", "energy_cost": 3, "rules": "Gain Armor, then draw a card for each protected module.", "preview": "Armor 12", "playable": false, "invalid_reason": "NO_ENERGY"}
+  ],
+  "draw_count": 0,
+  "discard_count": 19,
+  "summon_slots": ["ore_drone_01", "plant_seed_01"],
+  "module_slots": ["crystal_resonator_01", "spore_colony_01"]
+}

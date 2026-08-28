@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Generated build output
+dist/
+.next/
+
+# Local and temporary working files
+tmp/
+*.log
+.DS_Store
+
+# Local environment overrides (keep examples)
+.env
+.env.local
+.env.*.local
+
+# Python cache
+__pycache__/
+*.py[cod]

@@ -1,0 +1,14 @@
+{
+  "request_version": 1,
+  "asset_id": "combat_stone_battleship_v01",
+  "feature": "combat",
+  "asset_type": "unit_sprite",
+  "faction": "STONE",
+  "gameplay_role": "allied_capital_ship",
+  "status": "IN_GAME_QA",
+  "generator": "built_in_image_generation",
+  "source_path": "assets/generated/source/combat/stone_battleship_v01_1536x1024.png",
+  "runtime_path": "web_preview/public/assets/combat/stone_battleship_v01.png",
+  "prompt": "A single stone-tech allied battleship, three-quarter view pointing left, basalt armor, brass braces and cyan crystal reactor, polished pixel-art sprite with transparent background.",
+  "acceptance": ["Readable at combat scale", "Ship points toward enemy sector", "Transparent background", "No text or UI"]
+}

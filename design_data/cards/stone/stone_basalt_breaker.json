@@ -1,0 +1,34 @@
+{
+  "id": "stone_basalt_breaker",
+  "name": "BASALT BREAKER",
+  "faction": "STONE",
+  "rarity": "UNCOMMON",
+  "type": "ATTACK",
+  "stars": 3,
+  "mass": 2,
+  "energy_cost": 2,
+  "target": "SINGLE_ENEMY",
+  "tags": ["STONE", "ACTION", "PHYSICAL", "FRACTURE"],
+  "rules_text": "Deal 12 damage. Apply 2 Fracture.",
+  "primary_outcome": {
+    "kind": "DAMAGE",
+    "base": 12,
+    "compatible_system": "STONE",
+    "amplification_coefficient": 4,
+    "rounding": "FLOOR"
+  },
+  "effects": [
+    { "type": "DAMAGE", "base": 12, "compatible_system": "STONE", "amplification_coefficient": 4, "rounding": "FLOOR" },
+    { "type": "APPLY_STATUS", "status_id": "fracture", "stacks": 2 }
+  ],
+  "art": {
+    "source": "assets/generated/source/cards/starter/basalt_breaker_art_v01_1024x1536.png",
+    "runtime": "assets/cards/runtime/stone_basalt_breaker/art.png",
+    "focus": { "x": 0.5, "y": 0.44 },
+    "version": 1
+  },
+  "stamps": [
+    { "id": "faction_stone", "group": "FACTION", "icon_path": "assets/cards/icons/system_stone_v01.png" },
+    { "id": "type_action", "group": "TYPE", "icon_path": "assets/cards/icons/type_action_v01.png" }
+  ]
+}

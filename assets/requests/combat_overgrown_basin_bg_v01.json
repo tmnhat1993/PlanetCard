@@ -1,0 +1,21 @@
+{
+  "request_version": 1,
+  "asset_id": "combat_overgrown_basin_bg_v01",
+  "feature": "combat",
+  "asset_type": "battlefield_background",
+  "faction": "PLANT",
+  "gameplay_role": "combat_environment",
+  "source_size": {"width": 1672, "height": 941},
+  "runtime_size": {"width": 960, "height": 540},
+  "status": "IN_GAME_QA",
+  "generator": "built_in_image_generation",
+  "source_path": "assets/generated/source/combat/overgrown_basin_bg_v01_1672x941.png",
+  "runtime_path": "web_preview/public/assets/combat/overgrown_basin_bg_v01.png",
+  "prompt": "A continuous 16:9 pixel-art battlefield on a living Plant world: vine-covered ruins and giant fungi on the left, weathered stone landing ground and cyan crystal formations on the right, moody teal dusk, an open readable foreground, no characters, ships, UI, text, divider or versus composition.",
+  "acceptance": [
+    "Continuous battlefield with no visual split line",
+    "Readable behind enemy and ship sprites",
+    "Runtime image is exactly 960x540",
+    "No characters, ships, UI, text or watermark"
+  ]
+}

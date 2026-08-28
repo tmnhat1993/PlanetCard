@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "building.schema.json",
+  "title": "BuildingData",
+  "type": "object",
+  "required": ["id", "type"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+    "type": {"enum": ["EXTRACTOR", "PROCESSOR", "RESEARCH", "SHIPYARD", "TRADE_PORT"]},
+    "input": {
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "cycles": {"type": "integer", "minimum": 1},
+    "queue_size": {"type": "integer", "minimum": 1},
+    "prerequisite_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+  },
+  "additionalProperties": false
+}

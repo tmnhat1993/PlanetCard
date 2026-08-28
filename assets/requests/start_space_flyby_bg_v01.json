@@ -1,0 +1,24 @@
+{
+  "request_version": 1,
+  "asset_id": "start_space_flyby_bg_v01",
+  "feature": "start_screen",
+  "asset_type": "background",
+  "faction": "MULTI_PLANET",
+  "gameplay_role": "animated_main_menu_background",
+  "source_size": {"width": 1672, "height": 941},
+  "display_size": {"width": 960, "height": 540},
+  "camera": "forward_flight_central_vanishing_point",
+  "priority": "P1",
+  "status": "IN_GAME_QA",
+  "generator": "built_in_image_generation",
+  "source_path": "assets/generated/source/start/start_space_flyby_bg_v01_1672x941.png",
+  "runtime_path": "web_preview/public/assets/start/start_space_flyby_bg_v01.png",
+  "prompt": "Create a polished retro science-fiction pixel-art deep-space flight background for a 16:9 game start screen. Show a dark basalt planet passing near the lower-left edge, a smaller living verdant planet near the upper-right edge, and a distant pale blue ringed planet near the far-left horizon. Add sparse stars and subtle radial star streaks converging toward a central vanishing point. Keep the central vertical band visually quiet and dark for the HTML title and menu. Authentic hand-crafted 16-bit pixel art, hard pixel edges, no smoothing, no UI, no cockpit, no text, no logo, no characters.",
+  "acceptance": [
+    "Central title and menu remain readable",
+    "Planets stay outside the central interaction area",
+    "No generated text, UI, cockpit, or watermark",
+    "Runtime asset is exactly 960x540",
+    "Motion remains comfortable with reduced-motion fallback"
+  ]
+}

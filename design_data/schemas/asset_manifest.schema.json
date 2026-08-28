@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PixelLab asset manifest",
+  "type": "object",
+  "required": [
+    "asset_id",
+    "endpoint",
+    "description",
+    "image_size",
+    "output_path",
+    "approved"
+  ],
+  "properties": {
+    "asset_id": {
+      "type": "string"
+    },
+    "endpoint": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "image_size": {
+      "type": "object",
+      "required": [
+        "width",
+        "height"
+      ],
+      "properties": {
+        "width": {
+          "type": "integer"
+        },
+        "height": {
+          "type": "integer"
+        }
+      }
+    },
+    "output_path": {
+      "type": "string"
+    },
+    "style_version": {
+      "type": "string"
+    },
+    "seed": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "approved": {
+      "type": "boolean"
+    }
+  }
+}

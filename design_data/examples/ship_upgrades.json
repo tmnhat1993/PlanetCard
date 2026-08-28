@@ -1,0 +1,41 @@
+[
+  {
+    "id": "cargo_1",
+    "track": "CARGO",
+    "level": 1,
+    "from": 10,
+    "to": 12,
+    "cost": {
+      "ALLOY": 20
+    }
+  },
+  {
+    "id": "hull_1",
+    "track": "HULL",
+    "level": 1,
+    "from": 100,
+    "to": 120,
+    "cost": {
+      "ALLOY": 15
+    }
+  },
+  {
+    "id": "relic_bay_1",
+    "track": "RELIC_BAY",
+    "level": 1,
+    "from": 2,
+    "to": 3,
+    "cost": {
+      "PRECISION_CRYSTAL": 6
+    }
+  },
+  {
+    "id": "scanner_1",
+    "track": "SCANNER",
+    "level": 1,
+    "effect": "SHOW_NEXT_INTENT",
+    "cost": {
+      "ALLOY": 10
+    }
+  }
+]

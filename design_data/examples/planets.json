@@ -1,0 +1,38 @@
+[
+  {
+    "id": "stone",
+    "stages": 5,
+    "currency": "Lithic Marks",
+    "resources": [
+      "ORE",
+      "ALLOY",
+      "PRECISION_CRYSTAL"
+    ],
+    "combat_keywords": [
+      "ARMOR",
+      "FORTIFY",
+      "FRACTURE",
+      "HEAVY",
+      "CRYSTAL",
+      "COUNTER"
+    ]
+  },
+  {
+    "id": "plant",
+    "stages": 5,
+    "currency": "Verdant Credits",
+    "resources": [
+      "BIOMASS",
+      "RESIN",
+      "BIO_COMPOUND"
+    ],
+    "combat_keywords": [
+      "POISON",
+      "GROWTH",
+      "REGEN",
+      "SEED",
+      "ROOT",
+      "SUMMON"
+    ]
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "asset_id": "stone_basalt_sentinel_v01",
+  "type": "enemy",
+  "faction": "STONE",
+  "output_path": "assets/generated/raw/stone_basalt_sentinel_v01.png",
+  "style_version": "STONE_v01",
+  "endpoint": "/create-image-pixen",
+  "description": "Basalt Sentinel, defensive elite enemy for a retro sci-fi pixel art JRPG card battler. Wide squat four-legged stone construct, massive overlapping basalt armor plates, small pale crystal core, fortress-like silhouette, charcoal and slate material, low top-down three-quarter view, upper-left lighting, chunky readable pixel clusters, selective outline, limited material shading, transparent background, no tiny noisy details.",
+  "image_size": {
+    "width": 160,
+    "height": 160
+  },
+  "no_background": true,
+  "outline": "selective outline",
+  "detail": "medium detail",
+  "view": "low top-down",
+  "direction": "south-east",
+  "enhance_prompt": false,
+  "seed": 42821,
+  "approved": false
+}

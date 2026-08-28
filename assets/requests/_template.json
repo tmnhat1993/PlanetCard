@@ -1,0 +1,22 @@
+{
+  "request_version": 1,
+  "asset_id": "replace_me_v01",
+  "feature": "combat_greybox",
+  "asset_type": "enemy",
+  "faction": "STONE",
+  "gameplay_role": "replace_me",
+  "source_size": {"width": 128, "height": 128},
+  "display_size": {"width": 128, "height": 128},
+  "camera": "low_top_down_three_quarter",
+  "direction": "south_east",
+  "required_states": ["idle", "hit", "defeated"],
+  "priority": "P1",
+  "status": "BRIEF",
+  "brief_path": "assets/briefs/replace_me.md",
+  "acceptance": [
+    "Readable at intended display size",
+    "Matches faction silhouette and palette",
+    "Clean transparent edge",
+    "Passes crowded-scene in-game QA"
+  ]
+}

@@ -1,0 +1,27 @@
+[
+  {
+    "id": "plant_thornlings_01",
+    "planet_id": "plant",
+    "stage": 1,
+    "enemy_slots": [
+      {"slot": 0, "enemy_id": "plant_thornling", "level": 1},
+      {"slot": 1, "enemy_id": "plant_thornling", "level": 1},
+      {"slot": 2, "enemy_id": "plant_thornling", "level": 1}
+    ],
+    "field_id": null,
+    "reward_id": "plant_stage_01_first_or_repeat",
+    "intel_tags": ["POISON", "TARGET_PRIORITY"]
+  },
+  {
+    "id": "plant_vine_guard_01",
+    "planet_id": "plant",
+    "stage": 2,
+    "enemy_slots": [
+      {"slot": 0, "enemy_id": "plant_vine_guard", "level": 1},
+      {"slot": 2, "enemy_id": "plant_thornling", "level": 1}
+    ],
+    "field_id": null,
+    "reward_id": "plant_stage_02_first_or_repeat",
+    "intel_tags": ["PROTECT", "POISON"]
+  }
+]

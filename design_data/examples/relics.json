@@ -1,0 +1,35 @@
+[
+  {
+    "id": "stoneheart_reactor",
+    "name": "Stoneheart Reactor",
+    "trigger": "FIRST_MASS_2_PLUS_CARD_EACH_TURN",
+    "effect": {
+      "type": "MODIFY_CARD_ENERGY_COST",
+      "amount": -1
+    }
+  },
+  {
+    "id": "overloaded_cargo_rack",
+    "name": "Overloaded Cargo Rack",
+    "passives": [
+      {
+        "type": "MODIFY_CARGO",
+        "amount": 3
+      },
+      {
+        "type": "MODIFY_MAX_HULL",
+        "amount": -10
+      }
+    ]
+  },
+  {
+    "id": "mycelium_core",
+    "name": "Mycelium Core",
+    "trigger": "FIRST_POISON_APPLICATION_EACH_TURN",
+    "effect": {
+      "type": "ADD_STATUS_STACKS",
+      "status_id": "poison",
+      "amount": 2
+    }
+  }
+]

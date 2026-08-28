@@ -1,0 +1,59 @@
+{
+  "fixture_version": 1,
+  "id": "combat_default",
+  "turn": 2,
+  "seed": 42821,
+  "player": {
+    "hull": 84,
+    "max_hull": 100,
+    "shield": 12,
+    "armor": 5,
+    "energy": 2,
+    "max_energy": 3,
+    "statuses": []
+  },
+  "enemies": [
+    {
+      "id": "plant_vine_guard_runtime_01",
+      "name": "Vine Guard",
+      "role": "TANK",
+      "hp": 31,
+      "max_hp": 38,
+      "intent": {"icon": "protect", "label": "Protect ally"},
+      "statuses": [{"id": "fracture", "stacks": 1, "duration": null}]
+    },
+    {
+      "id": "plant_thornling_runtime_01",
+      "name": "Thornling",
+      "role": "STRIKER",
+      "hp": 18,
+      "max_hp": 18,
+      "intent": {"icon": "attack", "label": "Attack 6"},
+      "statuses": [{"id": "poison", "stacks": 3, "duration": null}]
+    }
+  ],
+  "hand": [
+    {
+      "instance_id": "stone_rock_cannon_instance_01",
+      "card_id": "stone_rock_cannon",
+      "name": "Rock Cannon",
+      "energy_cost": 1,
+      "rules": "Deal 9 damage.",
+      "preview": "7 (+2)",
+      "playable": true
+    },
+    {
+      "instance_id": "stone_layered_plating_instance_01",
+      "card_id": "stone_layered_plating",
+      "name": "Layered Plating",
+      "energy_cost": 1,
+      "rules": "Gain 9 Shield.",
+      "preview": "7 (+2)",
+      "playable": true
+    }
+  ],
+  "draw_count": 4,
+  "discard_count": 3,
+  "summon_slots": [null, null],
+  "module_slots": [null, null]
+}

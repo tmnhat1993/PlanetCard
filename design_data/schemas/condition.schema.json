@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "condition.schema.json",
+  "title": "Condition",
+  "type": "object",
+  "minProperties": 1,
+  "properties": {
+    "target_has_status": {"type": "string"},
+    "self_has_status": {"type": "string"},
+    "card_tag_played_count": {"type": "integer", "minimum": 0},
+    "hull_below_percent": {"type": "number", "minimum": 0, "maximum": 100},
+    "enemy_count": {"type": "integer", "minimum": 0},
+    "summon_count": {"type": "integer", "minimum": 0},
+    "field_is": {"type": "string"},
+    "first_time_this_turn": {"type": "boolean"},
+    "every_nth_trigger": {"type": "integer", "minimum": 1}
+    ,"card_in_hand": {"type": "boolean"}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "poison",
+    "name": "Poison",
+    "stack_mode": "ADD",
+    "max_stacks": null,
+    "duration_type": "ENCOUNTER",
+    "tick_timing": "OWNER_END",
+    "duration_decrement_timing": "NONE",
+    "effect": {
+      "type": "DAMAGE",
+      "damage_channel": "DIRECT",
+      "value_source": {"type": "STATUS_STACKS", "ratio": 1.0}
+    },
+    "persists_between_encounters": false,
+    "dispel_tags": ["DEBUFF", "POISON"]
+  },
+  {
+    "id": "fracture",
+    "name": "Fracture",
+    "stack_mode": "REFRESH_DURATION",
+    "max_stacks": 1,
+    "duration_type": "UNTIL_CONSUMED",
+    "tick_timing": "NONE",
+    "duration_decrement_timing": "NONE",
+    "persists_between_encounters": false,
+    "dispel_tags": ["DEBUFF", "FRACTURE"]
+  },
+  {
+    "id": "jam",
+    "name": "Jam",
+    "stack_mode": "REFRESH_DURATION",
+    "max_stacks": 1,
+    "duration_type": "TURNS",
+    "tick_timing": "NONE",
+    "duration_decrement_timing": "OWNER_END",
+    "persists_between_encounters": false,
+    "dispel_tags": ["DEBUFF", "TECH"]
+  },
+  {
+    "id": "weakness",
+    "name": "Weakness",
+    "stack_mode": "REFRESH_DURATION",
+    "max_stacks": 1,
+    "duration_type": "TURNS",
+    "tick_timing": "NONE",
+    "duration_decrement_timing": "OWNER_END",
+    "stat_modifier": {"stat": "ARSENAL", "amount": -2},
+    "persists_between_encounters": false,
+    "dispel_tags": ["DEBUFF"]
+  },
+  {
+    "id": "system_failure",
+    "name": "System Failure",
+    "stack_mode": "REFRESH_DURATION",
+    "max_stacks": 1,
+    "duration_type": "TURNS",
+    "tick_timing": "NONE",
+    "duration_decrement_timing": "OWNER_END",
+    "stat_modifier": {"stat": "ENGINEERING", "amount": -2},
+    "persists_between_encounters": false,
+    "dispel_tags": ["DEBUFF", "TECH"]
+  },
+  {
+    "id": "protected",
+    "name": "Protected",
+    "stack_mode": "REPLACE",
+    "max_stacks": 1,
+    "duration_type": "TURNS",
+    "tick_timing": "NONE",
+    "duration_decrement_timing": "OWNER_END",
+    "persists_between_encounters": false,
+    "dispel_tags": ["BUFF", "PROTECTION"]
+  },
+  {
+    "id": "counter",
+    "name": "Counter",
+    "stack_mode": "REFRESH_DURATION",
+    "max_stacks": 1,
+    "duration_type": "UNTIL_CONSUMED",
+    "tick_timing": "NONE",
+    "duration_decrement_timing": "NONE",
+    "persists_between_encounters": false,
+    "dispel_tags": ["BUFF", "COUNTER"]
+  }
+]

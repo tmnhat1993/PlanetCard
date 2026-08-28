@@ -1,0 +1,33 @@
+{
+  "id": "hybrid_crystal_heart",
+  "name": "CRYSTAL HEART",
+  "faction": "HYBRID",
+  "rarity": "LEGENDARY",
+  "type": "MODULE",
+  "stars": 5,
+  "mass": 3,
+  "energy_cost": 0,
+  "target": "SELF",
+  "tags": ["HYBRID", "PASSIVE", "SHIELD", "ENERGY"],
+  "rules_text": "First Shield gained each turn grants +1 Energy.",
+  "primary_outcome": {
+    "kind": "ENERGY",
+    "base": 1,
+    "compatible_system": "HYBRID",
+    "amplification_coefficient": 6,
+    "rounding": "FLOOR"
+  },
+  "effects": [
+    { "type": "TRIGGER", "event": "FIRST_SHIELD_GAINED", "effect": { "type": "GAIN_ENERGY", "base": 1, "compatible_system": "HYBRID", "amplification_coefficient": 6, "rounding": "FLOOR" } }
+  ],
+  "art": {
+    "source": "assets/generated/source/cards/starter/crystal_heart_art_v01_1024x1536.png",
+    "runtime": "assets/cards/runtime/hybrid_crystal_heart/art.png",
+    "focus": { "x": 0.5, "y": 0.48 },
+    "version": 1
+  },
+  "stamps": [
+    { "id": "faction_hybrid", "group": "FACTION", "icon_path": "assets/cards/icons/system_hybrid_v01.png" },
+    { "id": "type_passive", "group": "TYPE", "icon_path": "assets/cards/icons/type_passive_v01.png" }
+  ]
+}

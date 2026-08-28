@@ -1,0 +1,92 @@
+[
+  {
+    "id": "plant_thornling",
+    "name": "Thornling",
+    "role": "STRIKER",
+    "faction": "PLANT",
+    "max_hp": 18,
+    "actions": [
+      {
+        "id": "thorn_attack",
+        "weight": 3,
+        "effects": [
+          {
+            "type": "DAMAGE",
+            "base": 6
+          }
+        ]
+      },
+      {
+        "id": "thorn_spore",
+        "weight": 1,
+        "effects": [
+          {
+            "type": "APPLY_STATUS",
+            "status_id": "poison",
+            "stacks": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "plant_vine_guard",
+    "name": "Vine Guard",
+    "role": "TANK",
+    "faction": "PLANT",
+    "max_hp": 38,
+    "actions": [
+      {
+        "id": "guard_protect",
+        "weight": 2,
+        "effects": [
+          {
+            "type": "APPLY_STATUS",
+            "status_id": "protected",
+            "target": "ALLY"
+          }
+        ]
+      },
+      {
+        "id": "guard_attack",
+        "weight": 1,
+        "effects": [
+          {
+            "type": "DAMAGE",
+            "base": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "stone_basalt_sentinel",
+    "name": "Basalt Sentinel",
+    "role": "ELITE",
+    "faction": "STONE",
+    "max_hp": 85,
+    "actions": [
+      {
+        "id": "sentinel_guard",
+        "weight": 2,
+        "effects": [
+          {
+            "type": "GAIN_ARMOR",
+            "base": 10
+          }
+        ]
+      },
+      {
+        "id": "sentinel_counter",
+        "weight": 1,
+        "effects": [
+          {
+            "type": "APPLY_STATUS",
+            "status_id": "counter",
+            "stacks": 1
+          }
+        ]
+      }
+    ]
+  }
+]

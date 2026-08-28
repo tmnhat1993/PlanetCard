@@ -1,0 +1,34 @@
+{
+  "id": "plant_verdant_ritual",
+  "name": "VERDANT RITUAL",
+  "faction": "PLANT",
+  "rarity": "RARE",
+  "type": "TACTIC",
+  "stars": 4,
+  "mass": 1,
+  "energy_cost": 2,
+  "target": "ALL_ENEMIES",
+  "tags": ["PLANT", "MAGIC", "POISON", "SUMMON"],
+  "rules_text": "Apply 4 Poison. Grow 1 Seed.",
+  "primary_outcome": {
+    "kind": "POISON",
+    "base": 4,
+    "compatible_system": "PLANT",
+    "amplification_coefficient": 5,
+    "rounding": "FLOOR"
+  },
+  "effects": [
+    { "type": "APPLY_STATUS", "status_id": "poison", "stacks": 4, "base": 4, "compatible_system": "PLANT", "amplification_coefficient": 5, "rounding": "FLOOR" },
+    { "type": "SUMMON", "summon_id": "plant_seed" }
+  ],
+  "art": {
+    "source": "assets/generated/source/cards/starter/verdant_ritual_art_v01_1122x1402.png",
+    "runtime": "assets/cards/runtime/plant_verdant_ritual/art.png",
+    "focus": { "x": 0.5, "y": 0.42 },
+    "version": 1
+  },
+  "stamps": [
+    { "id": "faction_plant", "group": "FACTION", "icon_path": "assets/cards/icons/system_plant_v01.png" },
+    { "id": "type_magic", "group": "TYPE", "icon_path": "assets/cards/icons/type_magic_v01.png" }
+  ]
+}

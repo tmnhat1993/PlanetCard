@@ -1,0 +1,149 @@
+[
+  {
+    "id": "stone_rock_cannon",
+    "name": "Rock Cannon",
+    "faction": "STONE",
+    "rarity": "COMMON",
+    "type": "ATTACK",
+    "mass": 1,
+    "energy_cost": 1,
+    "target": "SINGLE_ENEMY",
+    "tags": [
+      "STONE",
+      "ATTACK",
+      "PHYSICAL"
+    ],
+    "effects": [
+      {
+        "type": "DAMAGE",
+        "base": 7,
+        "scaling_stat": "ARSENAL",
+        "scaling": 1.0
+      }
+    ]
+  },
+  {
+    "id": "stone_layered_plating",
+    "name": "Layered Plating",
+    "faction": "STONE",
+    "rarity": "COMMON",
+    "type": "TACTIC",
+    "mass": 1,
+    "energy_cost": 1,
+    "target": "SELF",
+    "tags": [
+      "STONE",
+      "DEFENSE"
+    ],
+    "effects": [
+      {
+        "type": "GAIN_SHIELD",
+        "base": 7,
+        "scaling_stat": "ENGINEERING",
+        "scaling": 1.0
+      }
+    ]
+  },
+  {
+    "id": "stone_seismic_cannon",
+    "name": "Seismic Cannon",
+    "faction": "STONE",
+    "rarity": "UNCOMMON",
+    "type": "ATTACK",
+    "mass": 2,
+    "energy_cost": 2,
+    "target": "SINGLE_ENEMY",
+    "tags": [
+      "STONE",
+      "ATTACK",
+      "HEAVY"
+    ],
+    "effects": [
+      {
+        "type": "DAMAGE",
+        "base": 14
+      },
+      {
+        "type": "DAMAGE",
+        "condition": {
+          "target_has_status": "fracture"
+        },
+        "base": 8
+      }
+    ]
+  },
+  {
+    "id": "plant_toxic_spore",
+    "name": "Toxic Spore",
+    "faction": "PLANT",
+    "rarity": "COMMON",
+    "type": "TACTIC",
+    "mass": 1,
+    "energy_cost": 1,
+    "target": "SINGLE_ENEMY",
+    "tags": [
+      "PLANT",
+      "POISON"
+    ],
+    "effects": [
+      {
+        "type": "APPLY_STATUS",
+        "status_id": "poison",
+        "stacks": 3,
+        "scaling_stat": "SCIENCE"
+      }
+    ]
+  },
+  {
+    "id": "plant_germinate",
+    "name": "Germinate",
+    "faction": "PLANT",
+    "rarity": "COMMON",
+    "type": "SUMMON",
+    "mass": 1,
+    "energy_cost": 1,
+    "target": "PLAYER_ZONE",
+    "tags": [
+      "PLANT",
+      "SEED",
+      "SUMMON"
+    ],
+    "effects": [
+      {
+        "type": "SUMMON",
+        "summon_id": "plant_seed"
+      }
+    ]
+  },
+  {
+    "id": "plant_leech_vine",
+    "name": "Leech Vine",
+    "faction": "PLANT",
+    "rarity": "UNCOMMON",
+    "type": "ATTACK",
+    "mass": 2,
+    "energy_cost": 2,
+    "target": "SINGLE_ENEMY",
+    "tags": [
+      "PLANT",
+      "ATTACK",
+      "SUSTAIN"
+    ],
+    "effects": [
+      {
+        "type": "DAMAGE",
+        "base": 5
+      },
+      {
+        "type": "HEAL_HULL",
+        "target": "SELF",
+        "value_source": {
+          "type": "TARGET_STATUS_STACKS",
+          "status_id": "poison",
+          "ratio": 1.0,
+          "cap": 6
+        }
+      }
+    ]
+  }
+]

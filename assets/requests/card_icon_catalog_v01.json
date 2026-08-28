@@ -1,0 +1,30 @@
+{
+  "request_version": 1,
+  "asset_id": "card_icon_catalog_v01",
+  "feature": "card_builder",
+  "asset_type": "attribute_icon_set",
+  "gameplay_role": "card_system_and_type_icons",
+  "status": "IN_TOOL_QA",
+  "generator": "built_in_image_generation",
+  "source_size": { "width": 1254, "height": 1254 },
+  "runtime_size": { "width": 96, "height": 96 },
+  "runtime_directory": "web_preview/public/assets/cards/icons",
+  "icons": [
+    { "id": "system_stone", "subject": "Basalt mountain and cyan crystal core" },
+    { "id": "system_plant", "subject": "Luminous three-leaf sprout and vine ring" },
+    { "id": "system_hybrid", "subject": "Cyan crystal fused with a green vine" },
+    { "id": "system_neutral", "subject": "Silver eight-direction compass star" },
+    { "id": "type_action", "subject": "Slashing blade and impact spark" },
+    { "id": "type_magic", "subject": "Arcane spiral sigil and orbiting motes" },
+    { "id": "type_passive", "subject": "Shield with continuous energy halo" },
+    { "id": "type_summon", "subject": "Creatures emerging from a portal" },
+    { "id": "type_module", "subject": "Gear surrounding a glowing reactor core" }
+  ],
+  "shared_prompt": "Exactly one centered circular pixel-art UI medallion on a flat magenta removal background, strong silhouette at 32px, thick dark outline, no text, letters, numbers, extra badges, scene or watermark.",
+  "acceptance": [
+    "Every icon is an independent transparent PNG",
+    "Every runtime icon is exactly 96x96",
+    "System and type meanings remain readable at 32px",
+    "Catalog exposes a stable ID and runtime path for HTML and Godot"
+  ]
+}

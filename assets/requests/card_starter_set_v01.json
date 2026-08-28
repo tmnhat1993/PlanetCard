@@ -1,0 +1,41 @@
+{
+  "request_version": 1,
+  "asset_id": "card_starter_set_v01",
+  "feature": "card_builder",
+  "asset_type": "card_art_set",
+  "gameplay_role": "starter_card_templates",
+  "status": "IN_TOOL_QA",
+  "generator": "built_in_image_generation_plus_html_composition",
+  "runtime_paths": [
+    "web_preview/public/assets/cards/starter/basalt_breaker_art_v01.png",
+    "web_preview/public/assets/cards/starter/verdant_ritual_art_v01.png",
+    "web_preview/public/assets/cards/starter/crystal_heart_art_v01.png",
+    "web_preview/public/assets/cards/ui/rarity_star_v01.png",
+    "web_preview/public/assets/cards/icons/system_stone_v01.png",
+    "web_preview/public/assets/cards/icons/system_plant_v01.png",
+    "web_preview/public/assets/cards/icons/system_hybrid_v01.png",
+    "web_preview/public/assets/cards/icons/type_action_v01.png",
+    "web_preview/public/assets/cards/icons/type_magic_v01.png",
+    "web_preview/public/assets/cards/icons/type_passive_v01.png"
+  ],
+  "cards": [
+    { "id": "stone_basalt_breaker", "name": "BASALT BREAKER", "system": "STONE", "type": "ACTION", "stars": 3 },
+    { "id": "plant_verdant_ritual", "name": "VERDANT RITUAL", "system": "PLANT", "type": "MAGIC", "stars": 4 },
+    { "id": "hybrid_crystal_heart", "name": "CRYSTAL HEART", "system": "HYBRID", "type": "PASSIVE", "stars": 5 }
+  ],
+  "layout_contract": {
+    "edge_padding": "5% of card width",
+    "artwork_height": "55% of card height",
+    "icon_bridge_height": "10% of card height",
+    "lower_content_height": "35% of card height",
+    "border_radius": "5% of card width",
+    "title_alignment": "centered pixel-style font in lower content region",
+    "laminate": "separate animated top overlay"
+  },
+  "prompts": [
+    "ACTION artwork: basalt rail cannon firing a cyan crystal projectile, pixel art, artwork only, no text or border.",
+    "MAGIC artwork: luminous verdant sigil over alien vines and ruins, pixel art, artwork only, no text or border.",
+    "PASSIVE artwork: heart-shaped crystal reactor in brass, basalt and roots, pixel art, artwork only, no text or border.",
+    "Rarity star: exactly one five-point gold pixel-art star UI sprite with transparent background."
+  ]
+}

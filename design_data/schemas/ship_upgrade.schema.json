@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ship_upgrade.schema.json",
+  "title": "ShipUpgradeData",
+  "type": "object",
+  "required": ["id", "track", "level", "cost"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+    "track": {"enum": ["HULL", "REACTOR", "CARGO", "SCANNER", "HANGAR", "RELIC_BAY", "ARSENAL", "ENGINEERING", "SCIENCE", "COMMAND"]},
+    "level": {"type": "integer", "minimum": 1},
+    "from": {"type": "number"},
+    "to": {"type": "number"},
+    "effect": {"type": "string"},
+    "cost": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "prerequisite_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+  },
+  "additionalProperties": false
+}

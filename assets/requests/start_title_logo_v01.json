@@ -1,0 +1,23 @@
+{
+  "request_version": 1,
+  "asset_id": "start_title_logo_v01",
+  "feature": "start_screen",
+  "asset_type": "logo",
+  "faction": "STONE_PLANT_HYBRID",
+  "gameplay_role": "main_game_title",
+  "source_size": {"width": 1774, "height": 887},
+  "display_size": {"width": 480, "height": 240},
+  "priority": "P1",
+  "status": "IN_GAME_QA",
+  "generator": "built_in_image_generation",
+  "source_path": "assets/generated/source/start/start_title_logo_v01_1774x887.png",
+  "runtime_path": "web_preview/public/assets/start/start_title_logo_v01.png",
+  "prompt": "Create a wide centered pixel-art title logo with the exact two-line text PLANET / DECKBUILDER. PLANET is smaller above DECKBUILDER. Use pale sandstone, muted gold, charcoal outline, pale cyan crystal highlights and restrained moss-green botanical accents. Premium retro science-fiction pixel art, exact spelling, no other text, no subtitle, no watermark.",
+  "acceptance": [
+    "Exact spelling: PLANET DECKBUILDER",
+    "Readable at 480x240 inside a 960x540 viewport",
+    "Transparent background",
+    "Stone and Plant motifs do not obscure letterforms",
+    "No subtitle, watermark, or extra glyphs"
+  ]
+}

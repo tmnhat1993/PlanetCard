@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "reward.schema.json",
+  "title": "RewardBundle",
+  "type": "object",
+  "properties": {
+    "resources": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
+    "currencies": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
+    "cards": {"type": "array", "items": {"type": "string"}},
+    "relics": {"type": "array", "items": {"type": "string"}},
+    "knowledge": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
+    "mastery": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}},
+    "licenses": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "unlock_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+  },
+  "additionalProperties": false
+}

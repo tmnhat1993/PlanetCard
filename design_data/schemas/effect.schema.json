@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "effect.schema.json",
+  "title": "Composable Effect",
+  "type": "object",
+  "required": ["type"],
+  "properties": {
+    "type": {
+      "enum": [
+        "DAMAGE", "GAIN_SHIELD", "GAIN_ARMOR", "HEAL_HULL",
+        "APPLY_STATUS", "REMOVE_STATUS", "DRAW", "DISCARD", "EXHAUST",
+        "MODIFY_ENERGY", "SUMMON", "DESTROY_SUMMON", "CREATE_MODULE",
+        "DESTROY_MODULE", "BUFF_STAT", "DEBUFF_STAT", "LOCK_CARD",
+        "ADD_JUNK_CARD", "SET_FIELD", "CLEANSE", "COUNTER",
+        "MODIFY_CARD_ENERGY_COST", "ADD_STATUS_STACKS",
+        "MODIFY_CARGO", "MODIFY_MAX_HULL", "GAIN_ENERGY", "GAIN_DEFEND", "TRIGGER", "AURA"
+      ]
+    },
+    "target": {"type": "string"},
+    "base": {"type": "number"},
+    "amount": {"type": "number"},
+    "status_id": {"type": "string"},
+    "stacks": {"type": "integer"},
+    "summon_id": {"type": "string"},
+    "module_id": {"type": "string"},
+    "card_id": {"type": "string"},
+    "field_id": {"type": "string"},
+    "scaling_stat": {"type": "string"},
+    "scaling": {"type": "number"},
+    "compatible_system": {"enum": ["STONE", "PLANT", "HYBRID", "NEUTRAL"]},
+    "amplification_coefficient": {"type": "number", "minimum": 0},
+    "rounding": {"enum": ["FLOOR"]},
+    "event": {"type": "string"},
+    "effect": {"$ref": "effect.schema.json"},
+    "tick_effect": {"$ref": "effect.schema.json"},
+    "stat": {"type": "string"},
+    "duration_turns": {"type": "integer", "minimum": 1},
+    "duration_amplification_coefficient": {"type": "number", "minimum": 0},
+    "result_key": {"type": "string"},
+    "damage_channel": {"enum": ["NORMAL", "DIRECT"]},
+    "condition": {"$ref": "condition.schema.json"},
+    "value_source": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {"enum": ["FIXED", "STATUS_STACKS", "TARGET_STATUS_STACKS", "STAT", "ENTITY_COUNT", "EFFECT_RESULT"]},
+        "effect_key": {"type": "string"},
+        "status_id": {"type": "string"},
+        "stat": {"type": "string"},
+        "ratio": {"type": "number"},
+        "cap": {"type": "number"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

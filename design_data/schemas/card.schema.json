@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "card.schema.json",
+  "title": "CardData",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "faction",
+    "mass",
+    "energy_cost",
+    "effects"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "faction": {
+      "type": "string"
+    },
+    "rarity": {
+      "type": "string"
+    },
+    "stars": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "type": {
+      "type": "string"
+    },
+    "mass": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "energy_cost": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "target": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "effects": {
+      "type": "array",
+      "items": {
+        "$ref": "effect.schema.json"
+      }
+    },
+    "rules_text": {
+      "type": "string"
+    },
+    "primary_outcome": {
+      "type": "object",
+      "required": ["kind", "base", "compatible_system", "amplification_coefficient", "rounding"],
+      "properties": {
+        "kind": { "enum": ["DAMAGE", "HEAL_HULL", "GAIN_SHIELD", "GAIN_ARMOR", "GAIN_DEFEND", "POISON", "SUMMON_HP", "ENERGY"] },
+        "base": { "type": "number", "minimum": 0 },
+        "compatible_system": { "enum": ["STONE", "PLANT", "HYBRID", "NEUTRAL"] },
+        "amplification_coefficient": { "type": "number", "minimum": 0 },
+        "rounding": { "const": "FLOOR" }
+      },
+      "additionalProperties": false
+    },
+    "hand_policy": {
+      "type": "object",
+      "required": ["discard_at_turn_end", "player_may_discard", "occupies_draw_slot"],
+      "properties": {
+        "discard_at_turn_end": { "type": "boolean" },
+        "player_may_discard": { "type": "boolean" },
+        "occupies_draw_slot": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "art": {
+      "type": "object",
+      "required": ["source", "runtime", "focus", "version"],
+      "properties": {
+        "source": { "type": "string" },
+        "runtime": { "type": "string" },
+        "focus": {
+          "type": "object",
+          "required": ["x", "y"],
+          "properties": {
+            "x": { "type": "number", "minimum": 0, "maximum": 1 },
+            "y": { "type": "number", "minimum": 0, "maximum": 1 }
+          },
+          "additionalProperties": false
+        },
+        "version": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "stamps": {
+      "type": "array",
+      "items": { "$ref": "attribute_stamp.schema.json" },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": true
+}

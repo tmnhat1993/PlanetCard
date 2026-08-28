@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "planet.schema.json",
+  "title": "PlanetData",
+  "type": "object",
+  "required": ["id", "stages", "currency", "resources", "combat_keywords"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+    "stages": {"type": "integer", "minimum": 1},
+    "currency": {"type": "string"},
+    "resources": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "combat_keywords": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+  },
+  "additionalProperties": false
+}

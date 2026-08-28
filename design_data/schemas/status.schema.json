@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "status.schema.json",
+  "title": "StatusData",
+  "type": "object",
+  "required": [
+    "id", "name", "stack_mode", "duration_type", "tick_timing",
+    "duration_decrement_timing", "persists_between_encounters"
+  ],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+    "name": {"type": "string"},
+    "stack_mode": {"enum": ["ADD", "REFRESH_DURATION", "REPLACE", "MAX", "UNIQUE"]},
+    "max_stacks": {"type": ["integer", "null"], "minimum": 1},
+    "duration_type": {"enum": ["TURNS", "UNTIL_CONSUMED", "ENCOUNTER", "PERMANENT"]},
+    "tick_timing": {"enum": ["NONE", "OWNER_START", "OWNER_END"]},
+    "duration_decrement_timing": {"enum": ["NONE", "OWNER_START", "OWNER_END"]},
+    "effect": {"$ref": "effect.schema.json"},
+    "stat_modifier": {
+      "type": "object",
+      "required": ["stat", "amount"],
+      "properties": {"stat": {"type": "string"}, "amount": {"type": "number"}},
+      "additionalProperties": false
+    },
+    "persists_between_encounters": {"type": "boolean"},
+    "dispel_tags": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+  },
+  "additionalProperties": false
+}

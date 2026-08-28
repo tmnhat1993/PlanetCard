@@ -1,0 +1,11 @@
+[
+  { "id": "faction_stone", "label": "STONE", "group": "FACTION", "icon_path": "assets/cards/icons/system_stone_v01.png" },
+  { "id": "faction_plant", "label": "PLANT", "group": "FACTION", "icon_path": "assets/cards/icons/system_plant_v01.png" },
+  { "id": "faction_hybrid", "label": "HYBRID", "group": "FACTION", "icon_path": "assets/cards/icons/system_hybrid_v01.png" },
+  { "id": "faction_neutral", "label": "NEUTRAL", "group": "FACTION", "icon_path": "assets/cards/icons/system_neutral_v01.png" },
+  { "id": "type_action", "label": "ACTION", "group": "TYPE", "icon_path": "assets/cards/icons/type_action_v01.png" },
+  { "id": "type_magic", "label": "MAGIC", "group": "TYPE", "icon_path": "assets/cards/icons/type_magic_v01.png" },
+  { "id": "type_passive", "label": "PASSIVE", "group": "TYPE", "icon_path": "assets/cards/icons/type_passive_v01.png" },
+  { "id": "mechanic_summon", "label": "SUMMON", "group": "TYPE", "icon_path": "assets/cards/icons/type_summon_v01.png" },
+  { "id": "mechanic_module", "label": "MODULE", "group": "TYPE", "icon_path": "assets/cards/icons/type_module_v01.png" }
+]

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ship_combat_stats.schema.json",
+  "title": "ShipCombatStats",
+  "type": "object",
+  "required": ["ship_amplification", "compatible_systems"],
+  "properties": {
+    "ship_amplification": { "type": "number", "minimum": 0 },
+    "compatible_systems": {
+      "type": "array",
+      "items": { "enum": ["STONE", "PLANT", "HYBRID", "NEUTRAL"] },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "cards": [
+    { "id": "stone_basalt_breaker", "path": "design_data/cards/stone/stone_basalt_breaker.json" },
+    { "id": "plant_verdant_ritual", "path": "design_data/cards/plant/plant_verdant_ritual.json" },
+    { "id": "hybrid_crystal_heart", "path": "design_data/cards/hybrid/hybrid_crystal_heart.json" }
+  ]
+}
