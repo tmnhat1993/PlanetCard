@@ -42,7 +42,7 @@ const SCREENS: ScreenDefinition[] = [
   { id: "combat-result", group: "Combat", title: "Combat Result", eyebrow: "EXPEDITION RESULT", shortcut: "04", description: "Victory, reward và Hull còn lại." },
   { id: "deck-builder", group: "Deck", title: "Deck Builder", eyebrow: "LOADOUT", shortcut: "05", description: "Collection, Mass capacity và computed output." },
   { id: "collection", group: "Deck", title: "Card Collection", eyebrow: "ARCHIVE", shortcut: "06", description: "Card library, filters và card detail." },
-  { id: "home", group: "Home", title: "Home Planet", eyebrow: "STONE HOMEWORLD", shortcut: "07", description: "Planet hotspots và trạng thái nền kinh tế." },
+  { id: "home", group: "Home", title: "Home Base", eyebrow: "PLANT / STONE COLONY", shortcut: "07", description: "Căn cứ mặt đất, công trình kinh tế và nâng cấp." },
   { id: "production", group: "Home", title: "Production", eyebrow: "STONE PROCESSOR", shortcut: "08", description: "Recipe, queue, cycle và inventory." },
   { id: "shipyard", group: "Home", title: "Shipyard", eyebrow: "BATTLESHIP", shortcut: "09", description: "Ship stats, upgrade và prerequisite." },
   { id: "research", group: "Home", title: "Research", eyebrow: "STONE RESEARCH", shortcut: "10", description: "Research nodes và card unlock." },
@@ -93,11 +93,11 @@ function Resource({ icon, name, amount, accent = "stone" }: { icon: string; name
 }
 
 const cardData = [
-  { name: "Rock Cannon", cost: 1, type: "ATTACK", text: "Deal 9 damage.", tag: "STONE", tone: "stone" },
-  { name: "Layered Plating", cost: 1, type: "TACTIC", text: "Gain 9 Shield.", tag: "STONE", tone: "stone" },
-  { name: "Seismic Cannon", cost: 2, type: "ATTACK", text: "Deal 14. +8 vs Fracture.", tag: "HEAVY", tone: "stone" },
-  { name: "Toxic Spore", cost: 1, type: "TACTIC", text: "Apply 3 Poison.", tag: "PLANT", tone: "plant" },
-  { name: "Germinate", cost: 1, type: "SUMMON", text: "Create a Seed.", tag: "PLANT", tone: "plant" },
+  { name: "Meteor Fang", cost: 1, type: "ACTION", text: "Deal 3 damage.", tag: "STONE", tone: "stone", stars: 1, art: "/assets/cards/sets/stone_one_star/stone_meteor_fang_art_v03.png" },
+  { name: "Basalt Bulwark", cost: 1, type: "BUFF", text: "Gain 2 defence.", tag: "STONE", tone: "stone", stars: 1, art: "/assets/cards/sets/stone_one_star/stone_basalt_bulwark_art_v03.png" },
+  { name: "Thorn Snap", cost: 1, type: "ACTION", text: "Deal 3 damage.", tag: "PLANT", tone: "plant", stars: 1, art: "/assets/cards/sets/plant_one_star/plant_thorn_snap_art_v03.png" },
+  { name: "Bloom Mend", cost: 1, type: "ACTION", text: "Restore 3 hull.", tag: "PLANT", tone: "plant", stars: 1, art: "/assets/cards/sets/plant_one_star/plant_bloom_mend_art_v03.png" },
+  { name: "Guardian Seed", cost: 1, type: "PASSIVE", text: "Held: gain defence.", tag: "PLANT", tone: "plant", stars: 1, art: "/assets/cards/sets/plant_one_star/plant_guardian_seed_art_v03.png" },
 ];
 
 function GameCard({ card, compact = false, selected = false, onClick }: { card: typeof cardData[number]; compact?: boolean; selected?: boolean; onClick?: () => void }) {
@@ -105,10 +105,27 @@ function GameCard({ card, compact = false, selected = false, onClick }: { card: 
     <button type="button" className={`game-card game-card--${card.tone} ${compact ? "game-card--compact" : ""} ${selected ? "is-selected" : ""}`} onClick={onClick}>
       <span className="game-card__cost">{card.cost}</span>
       <span className="game-card__name">{card.name}</span>
-      <span className="game-card__art"><i>◆</i></span>
+      <span className="game-card__art"><img src={card.art} alt="" /></span>
       <span className="game-card__type">{card.type}</span>
       <span className="game-card__text">{card.text}</span>
-      <span className="game-card__tag">{card.tag}</span>
+      <span className="game-card__tag"><b>{"★".repeat(card.stars)}</b>{card.tag}</span>
+    </button>
+  );
+}
+
+function CombatCard({ card, selected = false, onClick }: { card: typeof cardData[number]; selected?: boolean; onClick?: () => void }) {
+  const visualType = card.type === "PASSIVE" ? "passive" : card.type === "BUFF" ? "magic" : "action";
+  return (
+    <button type="button" className={`combat-card combat-card--${visualType} combat-card--${card.tone} ${selected ? "is-selected" : ""}`} onClick={onClick}>
+      <span className="combat-card__cost">{card.cost}</span>
+      <span className="combat-card__stars">{Array.from({ length: card.stars }, (_, index) => <img src="/assets/cards/ui/rarity_star_v01.png" alt="" key={index} />)}</span>
+      <span className="combat-card__art"><img src={card.art} alt="" /></span>
+      <span className="combat-card__icons" aria-label={`${card.tag} ${card.type}`}>
+        <i><img src={`/assets/cards/icons/system_${card.tone}_v01.png`} alt="" /></i>
+        <i><img src={`/assets/cards/icons/type_${visualType}_v01.png`} alt="" /></i>
+      </span>
+      <span className="combat-card__content"><strong>{card.name}</strong></span>
+      <span className={`combat-card__laminate laminate--${card.stars}`} aria-hidden="true" />
     </button>
   );
 }
@@ -189,61 +206,71 @@ function OverviewScreen({ emit }: ScreenProps) {
 function CombatScreen({ emit }: ScreenProps) {
   const [selected, setSelected] = useState(0);
   const enemies = [
-    { name: "Spore Dummy A", role: "SUPPORT", hp: 12, intent: "POISON 4", tone: "purple", scale: "small" },
-    { name: "Vine Dummy B", role: "TANK", hp: 31, intent: "PROTECT", tone: "green", scale: "large" },
-    { name: "Thorn Dummy C", role: "STRIKER", hp: 18, intent: "ATTACK 6", tone: "red", scale: "small" },
+    { name: "Sporeling", hp: 12, maxHp: 18, status: "☣", statusLabel: "Poison: loses hull each turn", tone: "purple", scale: "small" },
+    { name: "Vine Warden", hp: 31, maxHp: 36, status: "◆", statusLabel: "Guard: protects its allies", tone: "green", scale: "large" },
+    { name: "Thornmaw", hp: 18, maxHp: 24, status: "⚔", statusLabel: "Attack: preparing 6 damage", tone: "red", scale: "small" },
   ];
   return (
-    <ScreenFrame title="Hostile Contact" eyebrow="PLANT · STAGE 02 · TURN 4" right={<><Stat icon="♥" label="HULL" value="84 / 100" /><Stat icon="◇" label="SHIELD" value="12" /></>}>
-      <div className="combat-layout">
-        <aside className="combat-field"><span>FIELD</span><strong>Overgrown Basin</strong><small>Plant summons gain +1 HP.</small></aside>
-        <div className="combat-arena">
-          <section className="combat-side combat-side--enemy" aria-label="Enemy formation">
-            <header><span>ENEMY FORMATION</span><b>LEFT SECTOR</b></header>
-            <div className="enemy-row">
-              {enemies.map((enemy) => (
-                <button type="button" className={`enemy enemy--${enemy.scale}`} key={enemy.name} onClick={() => emit(`TARGET_SELECTED · ${enemy.name}`)}>
-                  <span className={`intent intent--${enemy.tone}`}>{enemy.intent}</span>
-                  <img src="/assets/combat/plant_dummy_enemy_v01.png" alt="Plant faction training dummy" />
-                  <strong>{enemy.name}</strong><small>{enemy.role}</small>
-                  <Progress value={enemy.hp * 2.3} tone={enemy.tone === "red" ? "red" : "green"} /><em>{enemy.hp} HP</em>
-                </button>
-              ))}
-            </div>
-          </section>
-          <section className="combat-side combat-side--player" aria-label="Player ship and summon zone">
-            <header><span>ALLIED BATTLESHIP</span><b>RIGHT SECTOR</b></header>
-            <div className="player-ship">
-              <img src="/assets/combat/stone_battleship_v01.png" alt="Stone faction allied battleship" />
-              <span>CRYSTAL RESONATOR · ONLINE</span>
-            </div>
-            <div className="summon-zone" aria-label="Summon slots">
-              <button type="button" onClick={() => emit("SUMMON_SLOT_SELECTED · 01")}><i>01</i><b>ORE DRONE</b><small>9 HP</small></button>
-              <button type="button" onClick={() => emit("SUMMON_SLOT_SELECTED · 02")}><i>02</i><b>EMPTY</b><small>SUMMON</small></button>
-              <button type="button" onClick={() => emit("SUMMON_SLOT_SELECTED · 03")}><i>03</i><b>EMPTY</b><small>SUMMON</small></button>
-            </div>
-          </section>
+    <div className="combat-screen">
+      <header className="combat-map-title"><span>PLANT · STAGE 02 · TURN 4</span><h2>OVERGROWN BASIN</h2></header>
+      <div className="combat-ship-vitals" aria-label="Ship vitals"><span>♥ <b>84 / 100</b></span><span>◇ <b>12 SHIELD</b></span></div>
+      <section className="combat-battlefield" aria-label="Battlefield">
+        <div className="enemy-row" aria-label="Enemy formation">
+          {enemies.map((enemy, index) => (
+            <button type="button" className={`enemy enemy--${enemy.scale} enemy--position-${index + 1}`} key={enemy.name} onClick={() => emit(`TARGET_SELECTED · ${enemy.name}`)}>
+              <span className={`enemy-status intent--${enemy.tone}`} title={enemy.statusLabel} aria-label={enemy.statusLabel}>{enemy.status}</span>
+              <img src="/assets/combat/plant_dummy_enemy_v01.png" alt="Plant faction enemy" />
+              <span className="enemy-vitals"><strong>{enemy.name}</strong><em>♥ {enemy.hp} / {enemy.maxHp}</em></span>
+            </button>
+          ))}
         </div>
-        <div className="hand-row">
-          <div className="energy-orb"><small>ENERGY</small><strong>2</strong><span>/ 3</span></div>
-          {cardData.map((card, index) => <GameCard key={card.name} card={card} selected={selected === index} onClick={() => { setSelected(index); emit(`REQUEST_SELECT_CARD · ${card.name}`); }} />)}
-          <div className="pile-counts"><span>DRAW <b>04</b></span><span>DISCARD <b>03</b></span><Button tone="primary" onClick={() => emit("REQUEST_END_TURN")}>END TURN</Button></div>
+        <div className="player-ship" aria-label="Allied battleship">
+          <img src="/assets/combat/stone_battleship_v01.png" alt="Stone faction allied battleship" />
         </div>
+        <div className="combat-summon-slots" aria-label="Summon slots">
+          <button type="button" onClick={() => emit("SUMMON_SLOT_SELECTED · 01")}><b>ORE DRONE</b><span>♥ 9</span></button>
+          <button type="button" aria-label="Empty summon slot 2" onClick={() => emit("SUMMON_SLOT_SELECTED · 02")}>+</button>
+          <button type="button" aria-label="Empty summon slot 3" onClick={() => emit("SUMMON_SLOT_SELECTED · 03")}>+</button>
+        </div>
+      </section>
+      <aside className="combat-relic-rail" aria-label="Ship relics">
+        <button type="button"><b>◆</b><span><strong>Stoneheart Reactor</strong>First defence card each turn gains +2.</span></button>
+        <button type="button"><b>◇</b><span><strong>Emergency Seal</strong>At low hull, gain 8 shield once.</span></button>
+      </aside>
+      <div className="hand-row">
+        <div className="energy-orb"><small>ENERGY</small><strong>2 <span>/ 3</span></strong></div>
+        <div className="combat-hand-cards">
+          {cardData.map((card, index) => <CombatCard key={card.name} card={card} selected={selected === index} onClick={() => { setSelected(index); emit(`REQUEST_SELECT_CARD · ${card.name}`); }} />)}
+        </div>
+        <Button tone="primary" onClick={() => emit("REQUEST_END_TURN")}>END TURN</Button>
       </div>
-    </ScreenFrame>
+    </div>
   );
 }
 
 function CombatResultScreen({ navigate }: ScreenProps) {
+  const battle = { stage: 2, totalStages: 5, turns: 5, enemiesDefeated: 3, hullRemaining: 84 };
+  const isFinalBattle = battle.stage === battle.totalStages;
   return (
-    <ScreenFrame title="Formation Broken" eyebrow="VICTORY · 5 TURNS" right={<span className="status-chip status-chip--green">STAGE CLEAR</span>}>
-      <div className="result-layout">
-        <div className="result-emblem"><span>PLANT · II</span><b>V</b><h1>VICTORY</h1><p>The expedition continues. Hull damage persists.</p></div>
-        <Panel title="Battle summary" eyebrow="PERFORMANCE"><div className="summary-grid"><Stat icon="♥" label="HULL LEFT" value="84" detail="−8 this battle" /><Stat icon="⚔" label="DAMAGE" value="52" /><Stat icon="▣" label="CARDS" value="14" /><Stat icon="◷" label="TURNS" value="05" /></div></Panel>
-        <Panel title="Rewards" eyebrow="SALVAGE"><div className="reward-row"><Resource icon="⬡" name="Ore" amount="+3" /><Resource icon="✦" name="Plant Mastery" amount="+2" accent="plant" /><Resource icon="◇" name="Production" amount="+1 cycle" accent="gold" /></div></Panel>
-        <div className="result-actions"><Button onClick={() => navigate("home")}>RETURN HOME</Button><Button tone="primary" onClick={() => navigate("expedition")}>CONTINUE EXPEDITION →</Button></div>
-      </div>
-    </ScreenFrame>
+    <div className="combat-result-screen">
+      <div className="combat-result-background" aria-hidden="true" />
+      <section className="combat-result-popup" aria-label="Battle result">
+        <header><span>STAGE {String(battle.stage).padStart(2, "0")} CLEAR</span><h1>VICTORY</h1><p>{battle.turns} TURNS · HULL REMAINING {battle.hullRemaining}</p></header>
+        <div className="combat-result-metrics">
+          <article className="combat-result-defeated"><span>ENEMIES DEFEATED</span><div aria-hidden="true"><i className="result-atlas-icon icon-sporeling" /><i className="result-atlas-icon icon-vine-warden" /><i className="result-atlas-icon icon-thornmaw" /></div><strong>{battle.enemiesDefeated}</strong></article>
+        </div>
+        <section className="combat-result-rewards"><h2>RESOURCES ACQUIRED</h2><div>
+          <article><i className="result-atlas-icon icon-shard" aria-hidden="true" /><span>SHARD<strong>+12</strong></span></article>
+          <article><i className="result-atlas-icon icon-ore" aria-hidden="true" /><span>ORE<strong>+3</strong></span></article>
+          <article><i className="result-atlas-icon icon-biomass" aria-hidden="true" /><span>BIOMASS<strong>+5</strong></span></article>
+          <article><i className="result-atlas-icon icon-plant-mastery" aria-hidden="true" /><span>PLANT MASTERY<strong>+2</strong></span></article>
+        </div></section>
+        <footer>
+          <Button onClick={() => navigate("expedition")}>RETURN TO MAP</Button>
+          {!isFinalBattle && <Button tone="primary" onClick={() => navigate("combat")}>NEXT BATTLE →</Button>}
+        </footer>
+      </section>
+    </div>
   );
 }
 
@@ -271,12 +298,70 @@ function CollectionScreen({ navigate }: ScreenProps) {
   );
 }
 
-function HomeScreen({ navigate }: ScreenProps) {
-  const hotspots = [{ id: "production" as ScreenId, label: "MINE", note: "+3 Ore / cycle", x: "15%", y: "60%" }, { id: "production" as ScreenId, label: "PROCESSOR", note: "2 jobs queued", x: "58%", y: "64%" }, { id: "research" as ScreenId, label: "RESEARCH", note: "1 unlock ready", x: "70%", y: "26%" }, { id: "shipyard" as ScreenId, label: "SHIPYARD", note: "Cargo upgrade", x: "27%", y: "24%" }, { id: "trade" as ScreenId, label: "TRADE PORT", note: "License active", x: "84%", y: "53%" }];
+function HomeScreen({ navigate, emit }: ScreenProps) {
+  type HomeFaction = "plant" | "stone";
+  type HomeBuilding = { id: ScreenId | "hq"; label: string; note: string; x: string; y: string; code: string };
+  const [faction, setFaction] = useState<HomeFaction>("plant");
+  const bases: Record<HomeFaction, { name: string; cycle: string; level: number; levelProgress: number; art: string; resource: string; amount: string; resourceIcon: string; buildings: HomeBuilding[] }> = {
+    plant: {
+      name: "VERDANT HAVEN", cycle: "GROWTH CYCLE 14", level: 3, levelProgress: 64,
+      art: "/assets/home/home_plant_base_v01.png", resource: "BIOMASS", amount: "86", resourceIcon: "icon-biomass",
+      buildings: [
+        { id: "production", label: "BIO FARM", note: "Grow & sell biomass", x: "19%", y: "69%", code: "01" },
+        { id: "research", label: "TECH GARDEN", note: "Research Plant cards", x: "23%", y: "30%", code: "02" },
+        { id: "hq", label: "VERDANT HQ", note: "Upgrade the whole base", x: "50%", y: "53%", code: "HQ" },
+        { id: "deck-builder", label: "ARSENAL", note: "Organize combat deck", x: "77%", y: "30%", code: "03" },
+        { id: "shipyard", label: "SHIPYARD", note: "Upgrade starship", x: "80%", y: "70%", code: "04" },
+      ],
+    },
+    stone: {
+      name: "BASALT HOLD", cycle: "MINING CYCLE 14", level: 4, levelProgress: 38,
+      art: "/assets/home/home_stone_base_v01.png", resource: "ORE", amount: "93", resourceIcon: "icon-ore",
+      buildings: [
+        { id: "production", label: "ORE MINE", note: "Extract & sell ore", x: "18%", y: "70%", code: "01" },
+        { id: "research", label: "CRYSTAL LAB", note: "Research Stone cards", x: "23%", y: "29%", code: "02" },
+        { id: "hq", label: "BASALT CITADEL", note: "Upgrade the whole base", x: "50%", y: "53%", code: "HQ" },
+        { id: "deck-builder", label: "ARSENAL", note: "Organize combat deck", x: "76%", y: "29%", code: "03" },
+        { id: "shipyard", label: "SHIPYARD", note: "Upgrade starship", x: "79%", y: "70%", code: "04" },
+      ],
+    },
+  };
+  const base = bases[faction];
+  const openBuilding = (building: HomeBuilding) => building.id === "hq"
+    ? emit(`BASE_UPGRADE_SELECTED · ${faction.toUpperCase()} · LEVEL ${base.level}`)
+    : navigate(building.id);
+
   return (
-    <ScreenFrame title="Lithos Prime" eyebrow="STONE HOMEWORLD · CYCLE 14" right={<div className="resource-strip"><Resource icon="⬡" name="Ore" amount="38" /><Resource icon="▰" name="Alloy" amount="24" /><Resource icon="◆" name="Crystal" amount="4" /></div>}>
-      <div className="home-layout"><div className="planet-scene"><div className="planet-core">STONE</div><div className="orbit orbit--one" /><div className="orbit orbit--two" />{hotspots.map((spot) => <button type="button" className="hotspot" style={{ left: spot.x, top: spot.y }} onClick={() => navigate(spot.id)} key={spot.label}><i>+</i><b>{spot.label}</b><span>{spot.note}</span></button>)}</div><aside className="home-brief"><span className="kicker">NEXT OBJECTIVE</span><h3>Prepare for Plant Stage 03</h3><p>Enemy disruption adds Spore Junk. Research a cleanse option or expand Cargo.</p><Progress value={56} tone="green" /><small>PLANT CAMPAIGN · 2 / 5</small><Button tone="primary" onClick={() => navigate("planet-intel")}>OPEN PLANET INTEL</Button></aside></div>
-    </ScreenFrame>
+    <div className={`home-base-screen home-base-screen--${faction}`}>
+      <img className="home-base-art" src={base.art} alt={`${base.name} ground colony`} />
+      <div className="home-base-vignette" />
+      <header className="home-base-hud">
+        <div className="home-faction-switch" aria-label="Home base layout">
+          <button type="button" className={faction === "plant" ? "is-active" : ""} onClick={() => setFaction("plant")}>PLANT</button>
+          <button type="button" className={faction === "stone" ? "is-active" : ""} onClick={() => setFaction("stone")}>STONE</button>
+        </div>
+        <div className="home-base-title"><span>HOME BASE · {base.cycle}</span><h2>{base.name}</h2></div>
+        <div className="home-base-wallet" aria-label="Current resources">
+          <div className="home-resource"><i className="result-atlas-icon icon-shard" /><span>SHARD<strong>128</strong></span></div>
+          <div className="home-resource"><i className={`result-atlas-icon ${base.resourceIcon}`} /><span>{base.resource}<strong>{base.amount}</strong></span></div>
+        </div>
+        <button type="button" className="home-universe-button" onClick={() => navigate("overview")}><span>UNIVERSE MAP</span><b>↗</b></button>
+      </header>
+
+      <main className="home-base-world" aria-label={`${base.name} buildings`}>
+        {base.buildings.map((building) => (
+          <button type="button" className={`home-building ${building.id === "hq" ? "home-building--hq" : ""}`} style={{ left: building.x, top: building.y }} onClick={() => openBuilding(building)} key={`${faction}-${building.label}`}>
+            <i>{building.code}</i><span><b>{building.label}</b><small>{building.note}</small></span>
+          </button>
+        ))}
+      </main>
+
+      <footer className="home-base-level">
+        <div><span>BASE LEVEL</span><strong>{String(base.level).padStart(2, "0")}</strong></div>
+        <div><b>NEXT BASE UPGRADE</b><Progress value={base.levelProgress} tone={faction === "plant" ? "green" : "blue"} /><small>{base.levelProgress}% MATERIALS READY</small></div>
+        <button type="button" onClick={() => emit(`BASE_UPGRADE_SELECTED · ${faction.toUpperCase()} · LEVEL ${base.level}`)}>UPGRADE HQ</button>
+      </footer>
+    </div>
   );
 }
 

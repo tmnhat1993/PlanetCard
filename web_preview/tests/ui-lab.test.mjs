@@ -134,6 +134,32 @@ test("includes an animated start screen with the three main menu actions", async
   assert.match(css, /@keyframes star-flight/);
 });
 
+test("uses two pixel-art ground base layouts with complete building navigation", async () => {
+  const [page, css] = await Promise.all([
+    readFile(pagePath, "utf8"),
+    readFile(cssPath, "utf8"),
+  ]);
+
+  assert.match(page, /home_plant_base_v01\.png/);
+  assert.match(page, /home_stone_base_v01\.png/);
+  assert.match(page, /BIO FARM/);
+  assert.match(page, /ORE MINE/);
+  assert.match(page, /TECH GARDEN/);
+  assert.match(page, /CRYSTAL LAB/);
+  assert.match(page, /ARSENAL/);
+  assert.match(page, /SHIPYARD/);
+  assert.match(page, /BASE LEVEL/);
+  assert.match(page, /UNIVERSE MAP/);
+  assert.match(page, /id: "deck-builder"/);
+  assert.match(page, /id: "overview"/);
+  assert.match(css, /\.home-base-screen/);
+  assert.match(css, /image-rendering:pixelated/);
+  await Promise.all([
+    access(new URL("../public/assets/home/home_plant_base_v01.png", import.meta.url)),
+    access(new URL("../public/assets/home/home_stone_base_v01.png", import.meta.url)),
+  ]);
+});
+
 test("uses an asset-driven planet carousel for the overview", async () => {
   const [page, css] = await Promise.all([
     readFile(pagePath, "utf8"),
@@ -195,18 +221,45 @@ test("keeps the Godot reference viewport fixed and debug controls outside it", a
   assert.match(page, /const \[scale, setScale\] = useState\(1\)/);
 });
 
-test("splits combat into enemy and allied sectors with reusable runtime assets", async () => {
+test("renders combat as one continuous battlefield with readable essential HUD", async () => {
   const [page, css] = await Promise.all([
     readFile(pagePath, "utf8"),
     readFile(cssPath, "utf8"),
   ]);
 
-  assert.match(page, /ENEMY FORMATION/);
-  assert.match(page, /ALLIED BATTLESHIP/);
+  assert.match(page, /OVERGROWN BASIN/);
+  assert.match(page, /combat-relic-rail/);
+  assert.match(page, /enemy-status/);
+  assert.match(page, /combat-hand-cards/);
+  assert.match(page, /Meteor Fang/);
+  assert.match(page, /Guardian Seed/);
+  assert.doesNotMatch(page, />DRAW </);
+  assert.doesNotMatch(page, />DISCARD </);
   assert.match(page, /plant_dummy_enemy_v01\.png/);
   assert.match(page, /stone_battleship_v01\.png/);
   assert.match(page, /SUMMON_SLOT_SELECTED/);
   assert.match(css, /overgrown_basin_bg_v01\.png/);
-  assert.match(css, /combat-arena:after\{content:none;display:none\}/);
-  assert.match(css, /combat-side--enemy\{border-right:0\}/);
+  assert.match(css, /Combat V2: one continuous illustrated battlefield/);
+  assert.match(css, /\.combat-map-title\{[^}]*left:50%/);
+  assert.match(css, /\.combat-relic-rail>button:hover>span/);
+});
+
+test("keeps combat result compact over the battlefield with progression rewards", async () => {
+  const [page, css] = await Promise.all([
+    readFile(pagePath, "utf8"),
+    readFile(cssPath, "utf8"),
+  ]);
+
+  assert.doesNotMatch(page, /EXP EARNED/);
+  assert.match(page, />SHARD<strong>\+12/);
+  assert.match(page, /ENEMIES DEFEATED/);
+  assert.match(page, /icon-sporeling/);
+  assert.match(page, /icon-vine-warden/);
+  assert.match(page, /icon-thornmaw/);
+  assert.match(page, /RESOURCES ACQUIRED/);
+  assert.match(page, /RETURN TO MAP/);
+  assert.match(page, /!isFinalBattle && <Button tone="primary"/);
+  assert.match(css, /\.combat-result-background\{[^}]*filter:blur\(7px\)/);
+  assert.match(css, /\.combat-result-popup\{[^}]*width:650px/);
+  await access(new URL("../public/assets/icons/combat_result_icon_atlas_v01.png", import.meta.url));
 });

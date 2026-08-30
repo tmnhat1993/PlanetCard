@@ -1,0 +1,16 @@
+[
+  {
+    "id": "duplicate_card",
+    "name": "Duplicate A",
+    "mass": 1,
+    "energy_cost": 1,
+    "effects": [{ "type": "DAMAGE", "base": 1 }]
+  },
+  {
+    "id": "duplicate_card",
+    "name": "Duplicate B",
+    "mass": 1,
+    "energy_cost": 1,
+    "effects": [{ "type": "DAMAGE", "base": 1 }]
+  }
+]

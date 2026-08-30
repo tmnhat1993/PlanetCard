@@ -1,0 +1,26 @@
+[
+  {
+    "id": "plant_sporeling",
+    "name": "Sporeling",
+    "role": "SUPPORT",
+    "faction": "PLANT",
+    "max_hp": 16,
+    "actions": [{ "id": "spore_burst", "weight": 1, "effects": [{ "type": "APPLY_STATUS", "status_id": "poison", "stacks": 1 }] }]
+  },
+  {
+    "id": "plant_vine_guard",
+    "name": "Vine Guard",
+    "role": "TANK",
+    "faction": "PLANT",
+    "max_hp": 38,
+    "actions": [{ "id": "vine_strike", "weight": 1, "effects": [{ "type": "DAMAGE", "base": 5 }] }]
+  },
+  {
+    "id": "plant_thornmaw",
+    "name": "Thornmaw",
+    "role": "STRIKER",
+    "faction": "PLANT",
+    "max_hp": 24,
+    "actions": [{ "id": "thorn_attack", "weight": 1, "effects": [{ "type": "DAMAGE", "base": 6 }] }]
+  }
+]

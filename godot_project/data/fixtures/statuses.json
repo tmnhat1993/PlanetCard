@@ -1,0 +1,20 @@
+[
+  {
+    "id": "poison",
+    "name": "Poison",
+    "stack_mode": "ADD",
+    "max_stacks": -1,
+    "duration_type": "ENCOUNTER",
+    "tick_timing": "OWNER_END",
+    "persists_between_encounters": false
+  },
+  {
+    "id": "fracture",
+    "name": "Fracture",
+    "stack_mode": "REFRESH_DURATION",
+    "max_stacks": 1,
+    "duration_type": "UNTIL_CONSUMED",
+    "tick_timing": "NONE",
+    "persists_between_encounters": false
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "plant_thorn_snap",
+    "name": "Thorn Snap",
+    "faction": "PLANT",
+    "rarity": "COMMON",
+    "type": "ATTACK",
+    "mass": 1,
+    "energy_cost": 1,
+    "target": "SINGLE_ENEMY",
+    "art_path": "res://art/approved/cards/plant_thorn_snap_art_v03.png",
+    "tags": ["PLANT", "ATTACK", "PHYSICAL"],
+    "effects": [{ "type": "DAMAGE", "base": 7 }]
+  },
+  {
+    "id": "plant_barkskin",
+    "name": "Barkskin",
+    "faction": "PLANT",
+    "rarity": "COMMON",
+    "type": "TACTIC",
+    "mass": 1,
+    "energy_cost": 1,
+    "target": "SELF",
+    "art_path": "res://art/approved/cards/plant_barkskin_art_v03.png",
+    "tags": ["PLANT", "DEFENSE"],
+    "effects": [{ "type": "GAIN_SHIELD", "base": 7 }]
+  },
+  {
+    "id": "plant_bloom_mend",
+    "name": "Bloom Mend",
+    "faction": "PLANT",
+    "rarity": "COMMON",
+    "type": "TACTIC",
+    "mass": 1,
+    "energy_cost": 1,
+    "target": "SELF",
+    "art_path": "res://art/approved/cards/plant_bloom_mend_art_v03.png",
+    "tags": ["PLANT", "HEAL"],
+    "effects": [{ "type": "HEAL_HULL", "base": 5 }]
+  },
+  {
+    "id": "plant_regrowth_cycle",
+    "name": "Regrowth Cycle",
+    "faction": "PLANT",
+    "rarity": "COMMON",
+    "type": "TACTIC",
+    "mass": 1,
+    "energy_cost": 1,
+    "target": "SELF",
+    "art_path": "res://art/approved/cards/plant_regrowth_cycle_art_v03.png",
+    "tags": ["PLANT", "DRAW"],
+    "effects": [{ "type": "DRAW", "base": 2 }]
+  },
+  {
+    "id": "plant_sap_leech",
+    "name": "Sap Leech",
+    "faction": "PLANT",
+    "rarity": "COMMON",
+    "type": "ATTACK",
+    "mass": 1,
+    "energy_cost": 1,
+    "target": "SINGLE_ENEMY",
+    "art_path": "res://art/approved/cards/plant_sap_leech_art_v03.png",
+    "tags": ["PLANT", "ATTACK", "SUSTAIN"],
+    "effects": [{ "type": "DAMAGE", "base": 5 }, { "type": "HEAL_HULL", "base": 2, "target": "SELF" }]
+  }
+]

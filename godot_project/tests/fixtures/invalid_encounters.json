@@ -1,0 +1,8 @@
+[
+  {
+    "id": "broken_encounter",
+    "planet_id": "plant",
+    "stage": 1,
+    "enemy_slots": [{ "slot": 0, "enemy_id": "missing_enemy", "level": 1 }]
+  }
+]
